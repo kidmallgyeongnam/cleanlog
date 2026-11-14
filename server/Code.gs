@@ -64,7 +64,7 @@ var API = {
       });
       si = si.replace(/(특별자치시|특별자치도|광역시|특별시)$/, '');
       return { region: clean_(si + (gu === si ? '' : gu), 20).replace(/ /g, '') };
-    } catch (err) { return { region: '' }; }
+    } catch (err) { return { region: '', err: String(err && err.message || err).slice(0, 200) }; }
   },
 
   /** 현장 작업 폴더 만들기. 같은 작업번호(sid)로 다시 불러도 폴더는 하나만 생깁니다. */
